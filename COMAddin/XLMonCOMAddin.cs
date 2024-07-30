@@ -32,7 +32,6 @@ namespace XLMonCOMAddin
                 }
 
                 //We are not relying on workbook close to calculate workbook open time as we would get no results if Excel.exe crashed or was terminated
-                filelog.Info("About to hook into Excel Events");
                 AppObj.SheetActivate += AppObj_SheetActivate;
                 AppObj.AfterCalculate += AppObj_AfterCalculate;
                 AppObj.WorkbookActivate += AppObj_WorkbookActivate;
@@ -41,7 +40,6 @@ namespace XLMonCOMAddin
             }
             catch (Exception ex)
             {
-                SeenFirstError = true;
                 // This is one of the few cases we log what we send over UDP differently to what we write to the file log.
                 //Don't want to be sending exception string over UDP.
                 System.Windows.Forms.MessageBox.Show("Exception found in OnConnection" + ex.ToString());
@@ -119,10 +117,10 @@ namespace XLMonCOMAddin
             string conCat = "";
             if (eventCallSequence != "")
             {
-                conCat = " -> "
+                conCat = " -> ";
             }
-            eventCallSequence = eventCallSequence + conCat + functionName
-            System.Windows.Forms.MessageBox.Show($"Called by: {functionName} \n GlobalCOunter is now: {globalCounter} \n EventCallSequence is: {eventCallSequence}");
+            eventCallSequence = eventCallSequence + conCat + functionName;
+            System.Windows.Forms.MessageBox.Show($"Called by: {functionName} \n GlobalCounter is now: {globalCounter} \n EventCallSequence is: {eventCallSequence}");
         }
 
     }
