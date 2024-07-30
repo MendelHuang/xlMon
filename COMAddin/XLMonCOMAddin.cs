@@ -110,7 +110,7 @@ namespace XLMonCOMAddin
             IncrementAndDisplay("AfterCalculate");
         }
 
-        //This function is for displaying wich event is being called and the counter number
+        //This function is for displaying which event is being called and the counter number
         public static void IncrementAndDisplay(string functionName)
         {
             globalCounter++;
